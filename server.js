@@ -6,6 +6,7 @@ import productRoutes from './routes/productRoutes.js';
 import promoRoutes from './routes/promoRoutes.js';
 import addressRoutes from './routes/addressRoutes.js';
 import presetRoutes from './routes/presetRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 import { connectDB } from './db.js';
 
@@ -23,5 +24,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/promos', promoRoutes);
 app.use('/api/addresses', addressRoutes);
 app.use('/api/presets', presetRoutes);
+app.use('/api/users', userRoutes);
 
 app.listen(PORT, console.log(`Server started `.blue.bold));
