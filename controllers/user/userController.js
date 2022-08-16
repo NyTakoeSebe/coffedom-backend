@@ -97,6 +97,7 @@ export const updateUser = asyncHandler(async (req, res) => {
         password: req.body.password,
         address: req.body.address,
         city: req.body.city,
+        bonuses: req.body.bonuses,
       },
     );
 
@@ -117,6 +118,17 @@ export const deleteUser = asyncHandler(async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: 'Ошибка при удалении пользователя',
+    });
+  }
+});
+
+export const getUserById = asyncHandler(async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    res.json(user);
+  } catch (error) {
+    res.status(404).json({
+      message: 'Ошибка при получении пользователя',
     });
   }
 });
