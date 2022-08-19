@@ -21,12 +21,12 @@ const presetModel = mongoose.Schema(
             type: String,
             required: true,
           },
-          count: {
-            type: Number,
-            required: true,
-          },
           size: {
             type: String,
+            required: true,
+          },
+          amount: {
+            type: Number,
             required: true,
           },
         },
@@ -47,13 +47,17 @@ const presetModel = mongoose.Schema(
             type: String,
             required: true,
           },
-          count: {
-            type: Number,
-            required: true,
-          },
           size: {
             type: String,
             required: true,
+          },
+          amount: {
+            type: Number,
+            required: true,
+          },
+          price: {
+            type: Number,
+            default: 0,
           },
         },
       ],

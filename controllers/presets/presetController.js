@@ -14,6 +14,7 @@ export const createPreset = asyncHandler(async (req, res) => {
 
     res.json(preset);
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       message: 'При создании акции произошла ошибка',
     });

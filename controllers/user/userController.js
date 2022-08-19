@@ -26,7 +26,7 @@ export const register = asyncHandler(async (req, res) => {
 
     const userData = user._doc;
 
-    res.json({ ...userData, token });
+    res.json({ userData, token });
   } catch (error) {
     res.status(500).json({
       message: 'Ошибка при регистрации',
@@ -36,7 +36,7 @@ export const register = asyncHandler(async (req, res) => {
 
 export const login = asyncHandler(async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email } = req.body;
 
     const user = await User.findOne({ email });
 
@@ -66,7 +66,7 @@ export const login = asyncHandler(async (req, res) => {
 
     const userData = user._doc;
 
-    res.json({ ...userData, token });
+    res.json({ userData, token });
   } catch (error) {
     console.log(error);
     res.status(403).json({
