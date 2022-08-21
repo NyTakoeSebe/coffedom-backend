@@ -26,7 +26,7 @@ app.use(cors());
 
 app.use('/api/products', productRoutes);
 app.use('/api/promos', promoRoutes);
-app.use('/api/addresses', addressRoutes);
+app.use('/api/address', addressRoutes);
 app.use('/api/presets', presetRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/carts', cartRoutes);
