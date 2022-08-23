@@ -2,6 +2,7 @@ import asyncHandler from 'express-async-handler';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../../models/userModel.js';
+import Cart from '../../models/cartModel.js';
 
 export const register = asyncHandler(async (req, res) => {
   try {
@@ -12,6 +13,11 @@ export const register = asyncHandler(async (req, res) => {
       email: req.body.email,
       name: req.body.name,
       password: passwordHash,
+    });
+
+    const cart = await Cart.create({
+      userId: user._id,
+      items: [],
     });
 
     const token = jwt.sign(
@@ -90,7 +96,7 @@ export const updateUser = asyncHandler(async (req, res) => {
   try {
     await User.updateOne(
       {
-        _id: req.params.id,
+        _id: req.userId,
       },
       {
         email: req.body.email,
@@ -111,7 +117,7 @@ export const updateUser = asyncHandler(async (req, res) => {
 
 export const deleteUser = asyncHandler(async (req, res) => {
   try {
-    await User.deleteOne({ _id: req.params.id });
+    await User.deleteOne({ _id: req.userId });
     res.json({
       message: 'Удача',
     });
