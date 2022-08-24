@@ -30,15 +30,6 @@ export const getCartByUserId = asyncHandler(async (req, res) => {
 
 export const updateCartByUserId = asyncHandler(async (req, res) => {
   try {
-    // await Cart.updateOne(
-    //   {
-    //     userId: req.userId,
-    //   },
-    //   {
-    //     items: req.body.items,
-    //   },
-    // );
-
     const updatedCart = await Cart.findOneAndUpdate(
       { userId: req.userId },
       { items: req.body.items },
