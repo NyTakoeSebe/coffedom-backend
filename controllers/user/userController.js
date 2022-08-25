@@ -94,13 +94,16 @@ export const getUsers = asyncHandler(async (req, res) => {
 
 export const updateUser = asyncHandler(async (req, res) => {
   try {
+    const salt = await bcrypt.genSalt(10);
+    const passwordHash = await bcrypt.hash(req.body.password, salt);
+
     await User.updateOne(
       {
         _id: req.userId,
       },
       {
         email: req.body.email,
-        password: req.body.password,
+        password: passwordHash,
         address: req.body.address,
         city: req.body.city,
         bonuses: req.body.bonuses,

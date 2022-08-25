@@ -35,7 +35,7 @@ export const updateCartByUserId = asyncHandler(async (req, res) => {
       { items: req.body.items },
       { new: true, upsert: true },
     );
-    res.json(updatedCart);
+    res.json(updatedCart.items);
   } catch (error) {
     res.status(500).json({
       message: 'Ошибка при обновлении корзины пользователя',
