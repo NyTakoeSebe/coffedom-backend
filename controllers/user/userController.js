@@ -95,7 +95,7 @@ export const getUsers = asyncHandler(async (req, res) => {
 export const updateUser = asyncHandler(async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(req.body.password, salt);
+    const passwordHash = await bcrypt.hash(req.body.passwordHash, salt);
 
     await User.updateOne(
       {
